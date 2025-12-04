@@ -138,7 +138,7 @@ export default function Home() {
                 Touching <span className="text-red-500">Hearts</span>, 
               </h1>
               <span className='text-2xl md:text-3xl lg:text-4xl text-gray-800 mb-4'> 
-                <i>Together, we can rewrite someone&apos;s story</i> 
+                <i>Together, we can rewrite someones story</i> 
               </span> 
               <p className="text-xl text-gray-600 mb-8">
                 Join hands with your community to make a difference. Donate to verified campaigns and help move communities forward through the spirit of Harambee.
@@ -371,7 +371,7 @@ export default function Home() {
                         <p className="text-green-200 text-sm">{testimonial.role || 'Supporter'}</p>
                       </div>
                     </div>
-                    <p className="italic">&quot;{testimonial.content}&quot;</p>
+                    <p className="italic">{testimonial.content}</p>
                   </div>
                 ))}
               </div>
