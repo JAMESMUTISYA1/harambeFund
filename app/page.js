@@ -8,6 +8,7 @@ import CampaignCard from '@/components/CampaignCard';
 import PartnershipsSection from '@/components/Partnershipsection';
 import Link from 'next/link';
 import { useHomepageData } from '@/hooks/useHomepageData';
+import Image from 'next/image';
 
 // Skeleton loader components
 const CampaignSkeleton = () => (
@@ -137,7 +138,7 @@ export default function Home() {
                 Touching <span className="text-red-500">Hearts</span>, 
               </h1>
               <span className='text-2xl md:text-3xl lg:text-4xl text-gray-800 mb-4'> 
-                <i>Together, we can rewrite someone's story</i> 
+                <i>Together, we can rewrite someone&apos;s story</i> 
               </span> 
               <p className="text-xl text-gray-600 mb-8">
                 Join hands with your community to make a difference. Donate to verified campaigns and help move communities forward through the spirit of Harambee.
@@ -351,9 +352,11 @@ export default function Home() {
                   <div key={testimonial.$id} className="bg-white bg-opacity-10 p-6 rounded-lg backdrop-blur-sm">
                     <div className="flex items-center mb-4">
                       {testimonial.avatarUrl ? (
-                        <img 
+                        <Image 
                           src={testimonial.avatarUrl} 
-                          alt={testimonial.name}
+                          alt={testimonial.name || 'Testimonial author'}
+                          width={48}
+                          height={48}
                           className="w-12 h-12 rounded-full mr-4 object-cover"
                         />
                       ) : (
@@ -364,11 +367,11 @@ export default function Home() {
                         </div>
                       )}
                       <div>
-                        <h3 className="font-semibold">{testimonial.name || "Anonymous"}</h3>
-                        <p className="text-green-200 text-sm">{testimonial.role || "Supporter"}</p>
+                        <h3 className="font-semibold">{testimonial.name || 'Anonymous'}</h3>
+                        <p className="text-green-200 text-sm">{testimonial.role || 'Supporter'}</p>
                       </div>
                     </div>
-                    <p className="italic">"{testimonial.content}"</p>
+                    <p className="italic">&quot;{testimonial.content}&quot;</p>
                   </div>
                 ))}
               </div>
