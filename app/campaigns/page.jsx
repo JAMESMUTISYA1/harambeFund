@@ -280,7 +280,7 @@ export default function Campaigns() {
               </Link>
               <button 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="border border-green-600 text-green-600 px-8极 py-3 rounded-lg font-medium hover:bg-green-50 transition"
+                className="border border-green-600 text-green-600 px-8 py-3 rounded-lg font-medium hover:bg-green-50 transition"
               >
                 Explore More
               </button>

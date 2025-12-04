@@ -187,7 +187,7 @@ export default function CreateCampaign() {
         </label>
         <input
           type="text"
-          id极="title"
+          id="title"
           name="title"
           value={formData.title}
           onChange={handleInputChange}
@@ -196,7 +196,7 @@ export default function CreateCampaign() {
           maxLength={500}
           required
         />
-        <p className="text-xs text-gray极-500 mt-1">Make it clear and compelling (max 500 characters)</p>
+        <p className="text-xs text-gray-500 mt-1">Make it clear and compelling (max 500 characters)</p>
       </div>
       
       <div>
@@ -229,7 +229,7 @@ export default function CreateCampaign() {
             name="target_amount"
             value={formData.target_amount}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500极 focus:border-green-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
             placeholder="e.g., 500000"
             min="1000"
             step="100"
@@ -285,7 +285,7 @@ export default function CreateCampaign() {
 
   // Step 2: Story & Details
   const renderStep2 = () => (
-    <div className="space极-y-6">
+    <div className="space-y-6">
       <h2 className="text-2xl font-semibold text-gray-800">Tell Your Story</h2>
       
       <div>
@@ -422,7 +422,7 @@ export default function CreateCampaign() {
               onChange={handleInputChange}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-check极ed:bg-green-600"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
           </label>
         </div>
       </div>
