@@ -97,10 +97,10 @@ export default function Home() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-green-50 to-emerald-50 py-16 relative overflow-hidden min极-h-[400px] flex items-center">
+        <section className="bg-gradient-to-r from-green-50 to-emerald-50 py-16 relative overflow-hidden min-h-[400px] flex items-center">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-red-300 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-64 h-极64 bg-green-300 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-green-300 rounded-full blur-3xl"></div>
           </div>
           
           <div className="container mx-auto px-4 text-center relative z-10">
@@ -139,7 +139,7 @@ export default function Home() {
               <span className='text-2xl md:text-3xl lg:text-4xl text-gray-800 mb-4'> 
                 <i>Together, we can rewrite someone's story</i> 
               </span> 
-              <p className="text-xl text-gray-极600 mb-8">
+              <p className="text-xl text-gray-600 mb-8">
                 Join hands with your community to make a difference. Donate to verified campaigns and help move communities forward through the spirit of Harambee.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -266,7 +266,7 @@ export default function Home() {
               
               <div className="text-center bg-white p-6 rounded-lg shadow-sm">
                 <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2极xl font-bold text-green-700">2</span>
+                  <span className="text-2xl font-bold text-green-700">2</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Spread the Word</h3>
                 <p className="text-gray-600">Share your campaign with friends, family, and your community.</p>
