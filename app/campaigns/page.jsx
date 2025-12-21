@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CampaignCard from '@/components/CampaignCard';
-import PaymentModal from '@/components/PaymentModal';
 import { appwriteService } from '@/lib/appwriteService';
 import Link from 'next/link';
 
@@ -14,8 +13,6 @@ export default function Campaigns() {
   const [filteredCampaigns, setFilteredCampaigns] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedCampaign, setSelectedCampaign] = useState(null);
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [filters, setFilters] = useState({
     category: 'all',
     sort: 'newest',
@@ -83,19 +80,9 @@ export default function Campaigns() {
   }, [filters, campaigns]);
 
   const handleDonateClick = (campaign) => {
-    setSelectedCampaign(campaign);
-    setShowPaymentModal(true);
-  };
-
-  const handlePaymentSuccess = () => {
-    setShowPaymentModal(false);
-    setSelectedCampaign(null);
-    // Refresh campaigns to update progress
-    fetchCampaigns();
-  };
-
-  const handlePaymentError = (error) => {
-    console.error("Payment error:", error);
+    // Navigate to campaign details page when donate button is clicked
+    const campaignId = campaign.id || campaign.$id;
+    window.location.href = `/campaigns/${campaignId}`;
   };
 
   return (
@@ -103,7 +90,7 @@ export default function Campaigns() {
       <Header />
       
       <main className="flex-grow">
-        {/* Emotional Hero Section */}
+        {/* Hero Section */}
         <section className="bg-gradient-to-r from-green-600 to-emerald-700 py-16 text-white">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-3xl mx-auto">
@@ -237,7 +224,7 @@ export default function Campaigns() {
                   {filteredCampaigns.map(campaign => (
                     <CampaignCard 
                       key={campaign.$id} 
-                      campaign={campaign} 
+                      campaign={campaign}
                       onDonateClick={handleDonateClick}
                     />
                   ))}
@@ -290,16 +277,6 @@ export default function Campaigns() {
       </main>
       
       <Footer />
-      
-      {/* Payment Modal */}
-      {showPaymentModal && (
-        <PaymentModal
-          campaign={selectedCampaign}
-          onClose={() => setShowPaymentModal(false)}
-          onSuccess={handlePaymentSuccess}
-          onError={handlePaymentError}
-        />
-      )}
     </div>
   );
 }
