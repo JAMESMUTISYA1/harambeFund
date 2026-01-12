@@ -28,7 +28,6 @@ export default function Campaigns() {
       setLoading(true);
       setError(null);
       
-      // Fetch campaigns using the appwriteService
       const campaignsResponse = await appwriteService.getActiveCampaigns();
       const campaignsData = campaignsResponse.documents || [];
       
@@ -42,18 +41,15 @@ export default function Campaigns() {
     }
   };
 
-  // Apply filters
   useEffect(() => {
     if (campaigns.length === 0) return;
     
     let result = [...campaigns];
     
-    // Category filter
     if (filters.category !== 'all') {
       result = result.filter(campaign => campaign.category === filters.category);
     }
     
-    // Search filter
     if (filters.search) {
       const searchTerm = filters.search.toLowerCase();
       result = result.filter(campaign => 
@@ -63,7 +59,6 @@ export default function Campaigns() {
       );
     }
     
-    // Sort filter
     if (filters.sort === 'newest') {
       result.sort((a, b) => new Date(b.$createdAt) - new Date(a.$createdAt));
     } else if (filters.sort === 'most-funded') {
@@ -80,7 +75,6 @@ export default function Campaigns() {
   }, [filters, campaigns]);
 
   const handleDonateClick = (campaign) => {
-    // Navigate to campaign details page when donate button is clicked
     const campaignId = campaign.id || campaign.$id;
     window.location.href = `/campaigns/${campaignId}`;
   };
@@ -90,36 +84,76 @@ export default function Campaigns() {
       <Header />
       
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-green-600 to-emerald-700 py-16 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <div className="max-w-3xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Every Donation <span className="text-red-300">Touches a Heart</span>
+        {/* ULTRA-COMPACT HERO SECTION */}
+        <section className="bg-gradient-to-r from-green-600 to-emerald-700 text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-white rounded-full blur-xl"></div>
+            <div className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-green-300 rounded-full blur-xl"></div>
+          </div>
+          
+          <div className="container mx-auto px-4 py-8 md:py-10 text-center relative z-10">
+            <div className="max-w-2xl mx-auto">
+              {/* Minimal Hero Badge */}
+              <div className="inline-flex items-center bg-white/5 backdrop-blur-sm rounded-full px-2.5 py-1 mb-3">
+                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+                </svg>
+                <span className="text-xs">Make a Difference</span>
+              </div>
+              
+              {/* Concise Hero Title */}
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 leading-tight">
+                Support Causes That <span className="text-yellow-300">Move Communities</span>
               </h1>
-              <p className="text-xl mb-8 opacity-90">
-                Join thousands of Kenyans making a difference through collective giving. 
-                Your contribution, no matter how small, creates ripples of change across communities.
+              
+              {/* Super Short Subtitle */}
+              <p className="text-sm md:text-base mb-4 opacity-90 max-w-lg mx-auto">
+                Create hope and change through collective Harambee giving.
               </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
+              
+              {/* Compact CTA Buttons */}
+              <div className="flex flex-col sm:flex-row justify-center gap-2">
                 <button 
                   onClick={() => document.getElementById('campaigns-grid').scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-white text-green-700 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition-all shadow-lg"
+                  className="bg-white text-green-700 px-4 py-2 text-xs font-semibold rounded hover:bg-green-50 transition shadow-sm hover:shadow"
                 >
-                  Support a Cause
+                  Explore Campaigns
                 </button>
                 <Link 
                   href="/campaigns/create" 
-                  className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-green-700 transition-all"
+                  className="border border-white text-white px-4 py-2 text-xs font-semibold rounded hover:bg-white hover:text-green-700 transition hover:shadow"
                 >
-                  Start Your Campaign
+                  Start Campaign
                 </Link>
+              </div>
+              
+              {/* Minimal Trust Indicators */}
+              <div className="mt-4 flex justify-center items-center gap-3 text-xs opacity-70">
+                <div className="flex items-center">
+                  <svg className="w-2.5 h-2.5 mr-1 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  Verified
+                </div>
+                <div className="flex items-center">
+                  <svg className="w-2.5 h-2.5 mr-1 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  Secure
+                </div>
               </div>
             </div>
           </div>
+          
+          {/* Minimal Wave Divider */}
+          <div className="absolute bottom-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 40" className="w-full">
+              <path fill="#f9fafb" fillOpacity="1" d="M0,32L48,26.7C96,21,192,11,288,16C384,21,480,43,576,48C672,53,768,43,864,32C960,21,1056,11,1152,10.7C1248,11,1344,21,1392,26.7L1440,32L1440,40L1392,40C1344,40,1248,40,1152,40C1056,40,960,40,864,40C768,40,672,40,576,40C480,40,384,40,288,40C192,40,96,40,48,40L0,40Z"></path>
+            </svg>
+          </div>
         </section>
 
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
+        <div className="container mx-auto px-4 py-6 max-w-7xl">
           {/* Error Message */}
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
